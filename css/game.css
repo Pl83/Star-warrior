@@ -15,7 +15,7 @@ body{
 
 #bg {
   height: 100%;
-  width: 1000%;
+  width: 400%;
   position: absolute;
   top: 0; 
   left: 0%;
@@ -28,10 +28,11 @@ main {
   height: 100%;
   width: 99.9%;
   background-color: blueviolet;
+  background-image: url(..//img/space1.png) ;
 }
 
 #origine {
-  background-color: royalblue;
+  background-color: rgba(65, 105, 225, 0);
   height: 100%;
   width: 0.1%;
 }
@@ -81,3 +82,9 @@ main {
 }
 
 
+h1 {
+  color: yellow;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 50px;
+}

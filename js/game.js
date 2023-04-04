@@ -61,7 +61,7 @@ ShootLaser();
 // animate background 
 gsap.to("#bg", {
   x: "-100%",
-  duration: 100,
+  duration: 40,
   ease: "none",
-  repeat: -1
+  repeat: 0
 });
