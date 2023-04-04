@@ -13,6 +13,17 @@ body{
   flex-direction: row;
 }
 
+#bg {
+  height: 100%;
+  width: 1000%;
+  position: absolute;
+  top: 0; 
+  left: 0%;
+  background-image: url(..//img/space1.png) ;
+  background-repeat: repeat;
+}
+
+
 main {
   height: 100%;
   width: 99.9%;

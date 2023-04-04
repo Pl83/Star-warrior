@@ -58,3 +58,10 @@ const ShootLaser = async () => {
 }
 ShootLaser();
 
+// animate background 
+gsap.to("#bg", {
+  x: "-100%",
+  duration: 100,
+  ease: "none",
+  repeat: -1
+});
