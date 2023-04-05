@@ -49,15 +49,11 @@ const ShootLaser = async () => {
     await sleep(100)
     let origine = document.querySelector('#origine')
     let laser = document.createElement('div')
-    let box = document.createElement('div')
     laser.classList.add('laser')
-    box.classList.add('laserbox')
-    laser.appendChild(box)
     let area = Math.floor(Math.random() * (95 - 0 + 1)) + 0;
     laser.style.top =  area - (i/1.5) + '%' ; // correctif car sinon les lasers sont de plus en plus bas jusqu'à disparaitre
     origine.appendChild(laser)
     gsap.to(".laser", {right: "1000000%", duration: 30}) // faire bouger les laser
-    let base = document.querySelector('#base')
   }
 }
 
