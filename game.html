@@ -9,9 +9,18 @@
 </head>
 <body>
 
-  <div id="endgame">
+  <div id="endgame" class="state">
     <h1>Game Over</h1>
     <img src="img/loose.png" alt="">
+    <div>
+      <button onclick="restart()">Restart Game</button>
+      <button>Restart Stori</button>
+    </div>
+  </div>
+
+  <div id="win" class="state">
+    <h1>You win</h1>
+    <img src="img/win.png" alt="">
     <div>
       <button onclick="restart()">Restart Game</button>
       <button>Restart Stori</button>

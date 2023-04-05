@@ -68,7 +68,7 @@ const sleep = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time))
 } 
 const ShootLaser = async () => {
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 20; i++) {
     await sleep(100)
     let origine = document.querySelector('#origine')
     let laser = document.createElement('div')
@@ -78,6 +78,10 @@ const ShootLaser = async () => {
     origine.appendChild(laser)
     gsap.to(".laser", {right: "1000000%", duration: 30}) // faire bouger les laser
   }
+  await sleep(2500)
+  let win = document.querySelector('#win')
+  win.style.zIndex = "3";
+  gsap.to("#win", {opacity: 1, duration: 1});
 }
 
 
@@ -85,9 +89,11 @@ const ShootLaser = async () => {
 
 
 // hitbox with addeventlistener
-var hit = 0;
-var ShildHp = 3;
-var XwingHp = 1; 
+var hit = 0; // initialise le compteur de hit
+
+
+var ShildHp = 1; // definie les hp du shield
+var XwingHp = 1; // definie les hp du Xwing
 
 function detecterCollision() {
   
@@ -107,7 +113,7 @@ function detecterCollision() {
       // Il y a collision !
       console.log("Collision détectée entre la base et un laser !");
       hit ++;
-      lasers.forEach(laser => laser.remove());
+      lasers.forEach(laser => laser.remove()); // clean les laser a l'impact & crée un bug qui remonte les laser. Peut étre retirer pour augmenter la difficulté 
       if (hit == ShildHp) {
         let base = document.querySelector('#base');
         base.style.backgroundColor = "rgba(0, 0, 0, 0)";
@@ -115,7 +121,7 @@ function detecterCollision() {
         let Xwing = document.querySelector('#Xwing')
         Xwing.style.display = "none";
         let endgame = document.querySelector('#endgame')
-        endgame.style.zIndex = "3";
+        endgame.style.zIndex = "4";
         gsap.to("#endgame", {opacity: 1, duration: 1});
       }
     }
