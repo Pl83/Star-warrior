@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mc75{
+    position: absolute;
+    left: -200px;
+    bottom: -150px;
+    
+
+    width: 175px;
+    height: 150px;
+   
+    transform: rotateX(65deg) rotateZ(-10deg) rotateY(-10deg);
+}   
+.mc75 > img{
+    width: 175px;
+    height: 150px;
+}
+
+.destroyer{
+    position: absolute;
+    right: -200px;
+    top: -150px;
+    
+
+    width: 175px;
+    height: 150px;
+   
+    transform: rotateX(55deg) rotateZ(20deg) rotateY(-10deg);
+}   
+
+.destroyer > img {
+    width: 163px;
+    height: 121.5px;
+}
