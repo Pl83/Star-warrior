@@ -1,6 +1,6 @@
 
-//Make the X-wing draggagle:
-dragElement(document.getElementById("Xwing"));
+//Controller 1 : Drag and drop
+
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
@@ -38,6 +38,29 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+dragElement(document.getElementById("Xwing"));  // active le drag and drop sur l'élément Xwing
+
+
+// Controller 2 : mouse
+function cursorxwing() {
+  const cursor = document.querySelector('#Xwing');
+
+document.addEventListener('mousemove', e => {
+  cursor.style.display = 'block';
+  cursor.style.left = e.clientX - cursor.offsetWidth / 2 + 'px';
+  cursor.style.top = e.clientY - cursor.offsetHeight / 2 + 'px';
+  document.body.style.cursor = 'none'; // masque le curseur de la souris
+});
+
+document.addEventListener('mouseleave', e => {
+  cursor.style.display = 'none';
+  document.body.style.cursor = 'default'; // rétablit le curseur de la souris par défaut
+});
+}
+// cursorxwing(); // active le curseur sur l'élément Xwing
+
+
+
 
 
 // laser beam
@@ -51,11 +74,14 @@ const ShootLaser = async () => {
     let laser = document.createElement('div')
     laser.classList.add('laser')
     let area = Math.floor(Math.random() * (95 - 0 + 1)) + 0;
-    laser.style.top =  area - (i/1.5) + '%' ; // correctif car sinon les lasers sont de plus en plus bas jusqu'à disparaitre
+    laser.style.top =  area - (i/1.2) + '%' ; // correctif car sinon les lasers sont de plus en plus bas jusqu'à disparaitre
     origine.appendChild(laser)
     gsap.to(".laser", {right: "1000000%", duration: 30}) // faire bouger les laser
   }
 }
+
+
+
 
 
 // hitbox with addeventlistener
@@ -93,6 +119,9 @@ function detecterCollision() {
   });
 }
 
+
+
+
 // animate background 
 gsap.to("#bg", {
   x: "-100%",
@@ -102,6 +131,9 @@ gsap.to("#bg", {
 });
 
 
+
+
+// launch game
 function play(){
   ShootLaser();
   setInterval(detecterCollision, 10);

@@ -40,9 +40,15 @@ main {
 
 #Xwing{
   position: absolute;
+
+  /* drag controler */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  /* cursor controler */
+  /* pointer-events: none; 
+  display: none;  */
 }
 
 #Xwing img{
