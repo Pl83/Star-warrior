@@ -64,6 +64,9 @@ const ShootLaser = async () => {
 
 // hitbox with addeventlistener
 var hit = 0;
+var ShildHp = 3;
+var XwingHp = 1; 
+
 function detecterCollision() {
   
   const base = document.getElementById("base");
@@ -83,10 +86,10 @@ function detecterCollision() {
       console.log("Collision détectée entre la base et un laser !");
       hit ++;
       lasers.forEach(laser => laser.remove());
-      if (hit == 3) {
+      if (hit == ShildHp) {
         let base = document.querySelector('#base');
         base.style.backgroundColor = "rgba(0, 0, 0, 0)";
-      } else if (hit == 4) {
+      } else if (hit - ShildHp == XwingHp) {
         let Xwing = document.querySelector('#Xwing')
         Xwing.style.display = "none";
       }
