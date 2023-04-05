@@ -114,6 +114,9 @@ function detecterCollision() {
       } else if (hit - ShildHp == XwingHp) {
         let Xwing = document.querySelector('#Xwing')
         Xwing.style.display = "none";
+        let endgame = document.querySelector('#endgame')
+        endgame.style.zIndex = "3";
+        gsap.to("#endgame", {opacity: 1, duration: 1});
       }
     }
   });
@@ -139,3 +142,9 @@ function play(){
   setInterval(detecterCollision, 10);
 }
 play();
+
+
+// restart game
+function restart(){
+  location.reload();
+}
