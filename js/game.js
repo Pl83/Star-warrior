@@ -1,3 +1,4 @@
+
 //Make the X-wing draggagle:
 dragElement(document.getElementById("Xwing"));
 function dragElement(elmnt) {
@@ -39,7 +40,6 @@ function dragElement(elmnt) {
 }
 
 
-
 // laser beam
 const sleep = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time))
@@ -49,14 +49,50 @@ const ShootLaser = async () => {
     await sleep(100)
     let origine = document.querySelector('#origine')
     let laser = document.createElement('div')
+    let box = document.createElement('div')
     laser.classList.add('laser')
+    box.classList.add('laserbox')
+    laser.appendChild(box)
     let area = Math.floor(Math.random() * (95 - 0 + 1)) + 0;
-    laser.style.top =  area - (i/1.5) + '%' ; 
+    laser.style.top =  area - (i/1.5) + '%' ; // correctif car sinon les lasers sont de plus en plus bas jusqu'à disparaitre
     origine.appendChild(laser)
-    gsap.to(".laser", {right: "1000000%", duration: 30})
+    gsap.to(".laser", {right: "1000000%", duration: 30}) // faire bouger les laser
+    let base = document.querySelector('#base')
   }
 }
-ShootLaser();
+
+
+// hitbox with addeventlistener
+var hit = 0;
+function detecterCollision() {
+  
+  const base = document.getElementById("base");
+  const lasers = document.querySelectorAll(".laser");
+  // Récupérer les coordonnées de l'élément base
+  const rectBase = base.getBoundingClientRect();
+  
+  // Boucler sur tous les éléments laser
+  lasers.forEach(laser => {
+    // Récupérer les coordonnées de l'élément laser
+    const rectLaser = laser.getBoundingClientRect();
+    
+    // Vérifier s'il y a une collision entre les deux éléments
+    if (rectBase.left < rectLaser.right && rectBase.right > rectLaser.left &&
+        rectBase.top < rectLaser.bottom && rectBase.bottom > rectLaser.top) {
+      // Il y a collision !
+      console.log("Collision détectée entre la base et un laser !");
+      hit ++;
+      lasers.forEach(laser => laser.remove());
+      if (hit == 3) {
+        let base = document.querySelector('#base');
+        base.style.backgroundColor = "rgba(0, 0, 0, 0)";
+      } else if (hit == 4) {
+        let Xwing = document.querySelector('#Xwing')
+        Xwing.style.display = "none";
+      }
+    }
+  });
+}
 
 // animate background 
 gsap.to("#bg", {
@@ -65,3 +101,10 @@ gsap.to("#bg", {
   ease: "none",
   repeat: 0
 });
+
+
+function play(){
+  ShootLaser();
+  setInterval(detecterCollision, 10);
+}
+play();

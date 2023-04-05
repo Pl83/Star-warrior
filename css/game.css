@@ -51,16 +51,39 @@ main {
   rotate: 90deg; 
 }
 
+#base {
+  background-color: rgba(127, 255, 212, 0.322); /* color of the hitbox of the X-wing */
+  z-index: 15; 
+  height: 170px; 
+  width: 170px; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  border-radius: 150px;
+}
+
 .laser {
   z-index: 10;
   position: relative;
   top: 0;
-  right: 0; 
+  right: -50%; 
   height: 6px;
   width: 40px;
   border-radius: 50px;
   background-color: red;
   animation: laser 2.5s infinite;
+}
+
+.laserbox {
+  background-color: rgba(127, 255, 212, 0.322);  /* color of the hitbox of laser */
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-70%, -50%); 
+  border-radius: 100px;
+  height: 20px;
+  width: 20px;
 }
 
 @keyframes laser{
@@ -88,3 +111,4 @@ h1 {
   text-align: center;
   margin-top: 50px;
 }
+
