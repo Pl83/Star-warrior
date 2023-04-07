@@ -16,3 +16,17 @@ function randomPosition() {
   var randomY = Math.floor(Math.random() * y);
   return [randomX, randomY];
 }
+
+
+
+
+
+gsap.to(
+  "#content",
+  {
+    top:"-200%",
+    duration: 50,
+    delay: 15,
+    ease:Sine.easeInOut,
+  }
+);
