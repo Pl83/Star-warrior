@@ -39,6 +39,7 @@ main {
 
 
 #Xwing{
+  display: none;
   position: absolute;
 
   /* drag controler */
@@ -57,11 +58,62 @@ main {
   rotate: 90deg; 
 }
 
-#base {
+#Awing{
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#Awing img{
+  height: 200px; 
+  width: auto; 
+  rotate: 90deg; 
+}
+
+#ETA{
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#ETA img{
+  height: 200px; 
+  width: auto; 
+}
+
+#Xbase {
   background-color: rgba(127, 255, 212, 0.322); /* color of the hitbox of the X-wing */
   z-index: 2; 
   height: 170px; 
   width: 170px; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  border-radius: 150px;
+}
+
+#Abase {
+  background-color: rgba(127, 255, 212, 0.322); /* color of the hitbox of the X-wing */
+  z-index: 2; 
+  height: 135px; 
+  width: 200px; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  border-radius: 150px;
+}
+
+#ETAbase {
+  background-color: rgba(127, 255, 212, 0.322); /* color of the hitbox of the X-wing */
+  z-index: 2; 
+  height: 180px; 
+  width: 200px; 
   position: absolute; 
   top: 50%; 
   left: 50%; 

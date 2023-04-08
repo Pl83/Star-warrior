@@ -1,7 +1,32 @@
 var aircraft = {
-  1: {shield: 4, hp: 2, path: '../img/xwing.png', name: 'X-Wing'},
-  2: {shield: 2, hp: 2, path: '../img/awing.png', name: 'A-Wing'},
+  1: {shield: 4, hp: 2, path: '../img/xwing.png', name: 'X-Wing', id: 'Xwing', box: 'Xbase'},
+  2: {shield: 2, hp: 2, path: '../img/awing.png', name: 'A-Wing', id: 'Awing' , box: 'Abase'},
+  3: {shield: 2, hp: 3, path: '../img/ETA.png', name: 'ETA', id: 'ETA' , box: 'ETAbase'},
 }
+
+
+
+var MyShip = 0;
+var Fire = 100;
+
+
+let card = document.querySelectorAll('.descrip')
+card.forEach((card) => {
+  card.addEventListener('click', () => {
+    MyShip = aircraft[card.id]
+    console.log(MyShip)
+    let textarea = document.querySelector('#MyShip')
+    textarea.innerHTML = 'You choose the ' + MyShip.name
+  })
+})
+
+let textnbl = document.querySelector('#textnbl')
+let nbl = document.querySelector('#nbl')
+nbl.addEventListener('change', () => {
+  Fire = nbl.value
+  textnbl.innerHTML = 'Nombre de Lasers :' + Fire
+})
+
 
 
 
@@ -74,7 +99,7 @@ const sleep = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time))
 } 
 const ShootLaser = async () => {
-  for (let i = 0; i < 150; i++) {
+  for (let i = 0; i < Fire; i++) {
     await sleep(100)
     let origine = document.querySelector('#origine')
     let laser = document.createElement('div')
@@ -94,14 +119,15 @@ const ShootLaser = async () => {
 // hitbox with addeventlistener
 var hit = 0; // initialise le compteur de hit
 
-
-var ShildHp = 4; // definie les hp du shield
-var XwingHp = 2; // definie les hp du Xwing
-console.log(ShildHp + XwingHp); // affiche le nombre de hp total
+ // console.log(ShildHp + Hp); // affiche le nombre de hp total
 
 function detecterCollision() {
+
+  var ShildHp = MyShip.shield; // definie les hp du shield
+  var Hp = MyShip.hp; // definie les hp du Xwing
   
-  const base = document.getElementById("base");
+  const base = document.getElementById(MyShip.box);
+  //console.log(base);
   const lasers = document.querySelectorAll(".laser");
   // Récupérer les coordonnées de l'élément base
   const rectBase = base.getBoundingClientRect();
@@ -117,14 +143,16 @@ function detecterCollision() {
       // Il y a collision !
       console.log("Collision détectée entre la base et un laser !");
       hit ++;
-      console.log(hit);
+      console.log('Hit: ' + hit + 'Shield: ' + ShildHp );
+      //console.log(hit);
       laser.remove(); // clean le laser a l'impact
       if (hit == ShildHp) {
-        let base = document.querySelector('#base');
+
+        let base = document.querySelector('#' + MyShip.box);
         base.style.backgroundColor = "rgba(0, 0, 0, 0)";
-      } else if (hit - ShildHp == XwingHp) {
-        let Xwing = document.querySelector('#Xwing')
-        Xwing.style.display = "none";
+      } else if (hit - ShildHp == Hp) {
+        let destroid = document.querySelector('#' + MyShip.id);
+        destroid.style.display = "none";
         let endgame = document.querySelector('#endgame')
         endgame.style.zIndex = "4";
         gsap.to("#endgame", {opacity: 1, duration: 1});
@@ -147,11 +175,18 @@ function background() {
 
 // launch game
 function play(){
-  dragElement(document.getElementById("Xwing"));
-  document.getElementById("menu").style.display = "none";
-  background();
-  ShootLaser();
-  setInterval(detecterCollision, 10);
+  console.log(MyShip);
+  if (MyShip != 0) {
+    dragElement(document.getElementById(MyShip.id));
+    let MakeAppear = document.querySelector('#'+MyShip.id);
+    MakeAppear.style.display = "block";
+    document.getElementById("menu").style.display = "none";
+    background();
+    ShootLaser();
+    setInterval(detecterCollision, 10);
+  } else {
+    alert("You must choose a ship before playing");
+  }
 }
 
 
