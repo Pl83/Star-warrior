@@ -122,6 +122,7 @@ p {
 #content {
 	position: absolute;
 	top: 100%;
+	background-color: rebeccapurple;
 	
 }
 
@@ -159,17 +160,29 @@ p {
 
 
 .container {
-	 background: #000;
+	 background: #000000;
 	 height: 100vh;
 	 overflow: hidden;
-	 display: flex;
+	 
 	 justify-content: center;
 	 align-items: center;
 	 perspective: 300px;
+	 display: flex;
+	 animation: show 5s infinite ease-in;
+	 opacity: 0;
 }
+
+ @keyframes show {
+	 
+	 100% {
+		opacity: 1;
+	}
+}
+
  .force_field .sword {
 	 transform-style: preserve-3d;
-	 animation: rotate 8000ms linear infinite;
+	 animation: rotate 10s 8000ms linear infinite;
+	 opacity: 0;
 }
  .force_field .sword .grip {
 	 position: absolute;
@@ -231,16 +244,22 @@ p {
 	 transform: rotateY(45deg);
 	 border-radius: 99px 99px 0 0;
 	 box-shadow: 0 -5px 30px 5px rgba(0, 100, 255, 0.7);
+
+	 /* @keyframes duration | timing-function | delay |
+   iteration-count | direction | fill-mode | play-state | name */
 	 animation: subBeam 10000ms ease-in-out infinite alternate;
 }
  @keyframes rotate {
 	 0% {
 		 transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+		 opacity: 1;
 	}
 	 100% {
+		opacity: 1;
 		 transform: rotateX(360deg) rotateY(1080deg) rotateZ(2160deg);
 	}
 }
+
  @keyframes mainBeam {
 	 0% {
 		 background: rgba(150, 150, 255, 0.8);
