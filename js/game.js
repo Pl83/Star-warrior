@@ -1,3 +1,9 @@
+var aircraft = {
+  1: {shield: 4, hp: 2, path: '../img/xwing.png', name: 'X-Wing'},
+  2: {shield: 2, hp: 2, path: '../img/awing.png', name: 'A-Wing'},
+}
+
+
 
 //Controller 1 : Drag and drop
 
@@ -38,37 +44,37 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-dragElement(document.getElementById("Xwing"));  // active le drag and drop sur l'élément Xwing
+  // active le drag and drop sur l'élément Xwing
 
 
 // Controller 2 : mouse
-function cursorxwing() {
-  const cursor = document.querySelector('#Xwing');
+// function cursorxwing() {
+//   const cursor = document.querySelector('#Xwing');
 
-document.addEventListener('mousemove', e => {
-  cursor.style.display = 'block';
-  cursor.style.left = e.clientX - cursor.offsetWidth / 2 + 'px';
-  cursor.style.top = e.clientY - cursor.offsetHeight / 2 + 'px';
-  document.body.style.cursor = 'none'; // masque le curseur de la souris
-});
+// document.addEventListener('mousemove', e => {
+//   cursor.style.display = 'block';
+//   cursor.style.left = e.clientX - cursor.offsetWidth / 2 + 'px';
+//   cursor.style.top = e.clientY - cursor.offsetHeight / 2 + 'px';
+//   document.body.style.cursor = 'none'; // masque le curseur de la souris
+// });
 
-document.addEventListener('mouseleave', e => {
-  cursor.style.display = 'none';
-  document.body.style.cursor = 'default'; // rétablit le curseur de la souris par défaut
-});
-}
+// document.addEventListener('mouseleave', e => {
+//   cursor.style.display = 'none';
+//   document.body.style.cursor = 'default'; // rétablit le curseur de la souris par défaut
+// });
+// }
 // cursorxwing(); // active le curseur sur l'élément Xwing
 
 
 
-
-
 // laser beam
+
+
 const sleep = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time))
 } 
 const ShootLaser = async () => {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 150; i++) {
     await sleep(100)
     let origine = document.querySelector('#origine')
     let laser = document.createElement('div')
@@ -85,15 +91,13 @@ const ShootLaser = async () => {
 }
 
 
-
-
-
 // hitbox with addeventlistener
 var hit = 0; // initialise le compteur de hit
 
 
-var ShildHp = 1; // definie les hp du shield
-var XwingHp = 1; // definie les hp du Xwing
+var ShildHp = 4; // definie les hp du shield
+var XwingHp = 2; // definie les hp du Xwing
+console.log(ShildHp + XwingHp); // affiche le nombre de hp total
 
 function detecterCollision() {
   
@@ -113,7 +117,8 @@ function detecterCollision() {
       // Il y a collision !
       console.log("Collision détectée entre la base et un laser !");
       hit ++;
-      lasers.forEach(laser => laser.remove()); // clean les laser a l'impact & crée un bug qui remonte les laser. Peut étre retirer pour augmenter la difficulté 
+      console.log(hit);
+      laser.remove(); // clean le laser a l'impact
       if (hit == ShildHp) {
         let base = document.querySelector('#base');
         base.style.backgroundColor = "rgba(0, 0, 0, 0)";
@@ -129,25 +134,26 @@ function detecterCollision() {
 }
 
 
-
-
 // animate background 
-gsap.to("#bg", {
-  x: "-100%",
-  duration: 40,
-  ease: "none",
-  repeat: 0
-});
-
-
+function background() {
+  gsap.to("#bg", {
+    x: "-100%",
+    duration: 40,
+    ease: "none",
+    repeat: 0
+  });
+}
 
 
 // launch game
 function play(){
+  dragElement(document.getElementById("Xwing"));
+  document.getElementById("menu").style.display = "none";
+  background();
   ShootLaser();
   setInterval(detecterCollision, 10);
 }
-play();
+
 
 
 // restart game

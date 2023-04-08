@@ -7,7 +7,27 @@
   <link rel="stylesheet" href="css/game.css">
   <title>Game</title>
 </head>
+
 <body>
+
+  <div id="menu">
+    <h1>Choose your space-ship</h1>
+    <div id="choice">
+      <div class="descrip">
+        <h2>X-wing</h2>
+        <img src="img/xwing.png" alt="">
+        <p>Shield : <span></span> <span></span> <span></span> <span></span></p>
+        <p>Hp : <span></span> <span></span> </p>
+      </div>
+      <div class="descrip">
+        <h2>A-wing</h2>
+        <img src="img/awing.png" alt="">
+        <p>Shield : <span></span> <span></span></p>
+        <p>Hp : <span></span> <span></span></p>
+      </div>
+    </div>
+    <button onclick="play()">Play</button>
+  </div>
 
   <div id="endgame" class="state">
     <h1>Game Over</h1>
@@ -38,6 +58,10 @@
       <div id="base"></div>
     </div>
 
+    <!-- <div id="Awing">
+      <img src="img/awing.png" alt="A-Wing">
+      <div id="base"></div>
+    </div> -->
     
 
   </main>
