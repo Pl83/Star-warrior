@@ -171,7 +171,7 @@ p {
 	 animation: show  ease-in;
 	 animation-duration: 1s;
 	 animation-delay: 1s;
-	 opacity: 0;
+	 opacity: 1;
 }
 
  @keyframes show {
@@ -183,7 +183,7 @@ p {
 
  .force_field .sword {
 	 transform-style: preserve-3d;
-	 animation: rotate 10s 8000ms linear infinite;
+	 /* animation: rotate 10s 8000ms linear infinite; */
 	 opacity: 0;
 }
  .force_field .sword .grip {
@@ -251,7 +251,7 @@ p {
    iteration-count | direction | fill-mode | play-state | name */
 	 animation: subBeam 10000ms ease-in-out infinite alternate;
 }
- @keyframes rotate {
+ /* @keyframes rotate {
 	 0% {
 		 transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 		 opacity: 1;
@@ -260,7 +260,7 @@ p {
 		opacity: 1;
 		 transform: rotateX(360deg) rotateY(1080deg) rotateZ(2160deg);
 	}
-}
+} */
 
  @keyframes mainBeam {
 	 0% {

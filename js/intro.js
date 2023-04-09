@@ -27,8 +27,8 @@ gsap.to(
   "#content",
   {
     top:"-200%",
-    duration: 50,
-    delay: 15,
+    duration: 40,
+    delay: 13,
     ease:Sine.easeInOut,
   }
 );
@@ -54,4 +54,33 @@ logoTimeline.delay(9);
 // add the tweens to the timeline - Note we're using tl.to not gsap.to
 logoTimeline.to(".logo", { opacity: 1, scale :1 , duration:0.1} );
 
-logoTimeline.to(".logo", { opacity: 0,  scale: 0.1 , duration: 4 });
+logoTimeline.to(".logo", { opacity: 0, scale: 0.1, duration: 4 });
+
+
+
+
+
+
+// var swordfield = gsap.fromTo(
+//   ".force_field .sword",
+ 
+//   {   opacity: 0, tranform: "rotateX(0deg) rotateY(0deg) rotateZ(0deg)" },
+//   {
+//     opacity: 1, transform: "rotateX(360deg) rotateY(1080deg) rotateZ(2160deg)",
+//     duration: 10, repeat: -1, ease: linear, delay: 9 ,
+//   }
+// );
+
+gsap.to(".force_field .sword", {
+  transform: "rotateX(360deg) rotateY(1080deg) rotateZ(2160deg)",
+  duration: 5,
+  opacity: 1,
+  delay: 9,
+  ease: Sine.linear,
+  repeat: -1,
+  onRepeat: () => {
+    const sword = document.querySelector(".force_field .sword");
+    sword.style.opacity = 1;
+    console.log(sword.style.opacity);
+  },
+});
