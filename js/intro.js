@@ -43,3 +43,15 @@ introTimeline.to(".intro", { opacity: 0, duration: 0.5 });
 introTimeline.to(".intro", { opacity: 1, duration: 2.5});
 introTimeline.to(".intro", { opacity: 1, duration: 2.5});
 introTimeline.to(".intro", { opacity: 0, duration: 0.5 });
+
+
+
+
+let logoTimeline = gsap.timeline();
+
+logoTimeline.delay(9);
+
+// add the tweens to the timeline - Note we're using tl.to not gsap.to
+logoTimeline.to(".logo", { opacity: 1, scale :1 , duration:0.1} );
+
+logoTimeline.to(".logo", { opacity: 0,  scale: 0.1 , duration: 4 });

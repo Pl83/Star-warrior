@@ -68,14 +68,14 @@ body::after {
 	z-index: 2;
 	width: 100%;
 	opacity: 0;
-	animation: logo 4s ease-out 9s;
+	/* animation: logo 4s ease-out 9s; */
 }
 
 .logo img {
 	width: inherit;
 }
 
-@keyframes logo {
+/* @keyframes logo {
 	0% {
 		opacity: 1;
 		transform: translate(-50%, -50%) scale(2);
@@ -87,7 +87,7 @@ body::after {
 		opacity: 0;
 		transform: translate(-50%, -50%) scale(0.1);
 	}
-}
+} */
 
 p {
 	color: #ffe81f;
