@@ -42,10 +42,10 @@ body::after {
 	font-size: 3.25rem;
 	width: 80%;
 	opacity: 0;
-	animation: intro 6s ease-out 0.5s;
+	/* animation: intro 6s ease-out 0.5s; */
 }
 
-@keyframes intro {
+/* @keyframes intro {
 	0% {
 		opacity: 0;
 	}
@@ -58,7 +58,7 @@ body::after {
 	100% {
 		opacity: 0;
 	}
-}
+} */
 
 .logo {
 	position: absolute;
@@ -122,7 +122,7 @@ p {
 #content {
 	position: absolute;
 	top: 100%;
-	background-color: rebeccapurple;
+	
 	
 }
 
@@ -168,7 +168,9 @@ p {
 	 align-items: center;
 	 perspective: 300px;
 	 display: flex;
-	 animation: show 5s infinite ease-in;
+	 animation: show  ease-in;
+	 animation-duration: 1s;
+	 animation-delay: 1s;
 	 opacity: 0;
 }
 

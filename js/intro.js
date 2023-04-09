@@ -17,6 +17,8 @@ function randomPosition() {
   return [randomX, randomY];
 }
 
+gsap.to
+
 
 
 
@@ -30,3 +32,14 @@ gsap.to(
     ease:Sine.easeInOut,
   }
 );
+
+// create a timeline
+let introTimeline = gsap.timeline()
+
+introTimeline.delay(0.5)
+
+// add the tweens to the timeline - Note we're using tl.to not gsap.to
+introTimeline.to(".intro", { opacity: 0, duration: 0.5 });
+introTimeline.to(".intro", { opacity: 1, duration: 2.5});
+introTimeline.to(".intro", { opacity: 1, duration: 2.5});
+introTimeline.to(".intro", { opacity: 0, duration: 0.5 });
