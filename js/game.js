@@ -242,11 +242,18 @@ function restart(){
 
 /* script game numero 2 */
 
-// let screen = document.querySelector('#screen');
 
-// let target = document.createElement('div');
-// target.classList.add('target');
-// screen.appendChild(target);
+
+// Ajoute un gestionnaire d'événements pour l'événement mousemove
+let screen = document.querySelector('#screen');
+
+
+
+var takedown = 0;
+
+let target = document.createElement('div');
+target.classList.add('target');
+screen.appendChild(target);
 
 var ennemies = {
   1 : {
@@ -260,69 +267,151 @@ var ennemies = {
   }
 }
 
-function Traj1() {
+
+const Traj1 = async () => {
   nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-  console.log(nb);
-  let target = document.querySelector('.target');
-  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  let ship = document.createElement('div');
+  ship.classList.add('target' + nb);
+  ship.id = "Traj1";
+  screen.appendChild(ship);
   if (nb == 3) {
-    gsap.to(".target", {rotate: "30deg", duration: 0, ease: "none"})
+    gsap.to("#Traj1", {rotate: "30deg", duration: 0, ease: "none"})
   } else {
-    gsap.to(".target", {rotate: "120deg", duration: 0, ease: "none"})
+    gsap.to("#Traj1", {rotate: "120deg", duration: 0, ease: "none"})
   }
-  gsap.fromTo(".target", {left: "-10%", top: "0%"}, {left: "100%", top: "100%", duration: 5, ease: "none"});
+  gsap.fromTo("#Traj1", {left: "-10%", top: "0%"}, {left: "100%", top: "100%", duration: 3, ease: "none"});
+  // remove
+  setTimeout(function(){
+    ship.remove();
+  }, 3000);
 }
 
-function Traj2() {
+const Traj2 = async () => {
   nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-  console.log(nb);
-  let target = document.querySelector('.target');
-  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  let ship = document.createElement('div');
+  ship.classList.add('target' + nb);
+  ship.id = "Traj2";
+  screen.appendChild(ship);
   if (nb == 3) {
-    gsap.to(".target", {rotate: "-30deg", duration: 0, ease: "none"})
+    gsap.to("#Traj2", {rotate: "-210deg", duration: 0, ease: "none"})
   } else {
-    gsap.to(".target", {rotate: "-120deg", duration: 0, ease: "none"})
+    gsap.to("#Traj2", {rotate: "-120deg", duration: 0, ease: "none"})
   }
-  gsap.fromTo(".target", {left: "110%", top: "0%"}, {left: "-10%", top: "100%", duration: 5, ease: "none"});
+  gsap.fromTo("#Traj2", {left: "110%", top: "0%"}, {left: "-10%", top: "100%", duration: 3, ease: "none"});
+  // remove
+  setTimeout(function(){
+    ship.remove();
+  }, 3000);
 }
 
-function Traj3() {
+const Traj3 = async () =>{
   nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-  console.log(nb);
-  let target = document.querySelector('.target');
-  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  let ship = document.createElement('div');
+  ship.classList.add('target' + nb);
+  ship.id = "Traj3";
+  screen.appendChild(ship);
   if (nb == 3) {
-    gsap.to(".target", {rotate: "210deg", duration: 0, ease: "none"})
+    gsap.to("#Traj3", {rotate: "210deg", duration: 0, ease: "none"})
   } else {
-    gsap.to(".target", {rotate: "300deg", duration: 0, ease: "none"})
+    gsap.to("#Traj3", {rotate: "300deg", duration: 0, ease: "none"})
   }
-  gsap.fromTo(".target", {left: "110%", top: "100%"}, {left: "-10%", top: "0%", duration: 5, ease: "none"});
+  gsap.fromTo("#Traj3", {left: "110%", top: "100%"}, {left: "-10%", top: "0%", duration: 3, ease: "none"});
+  // remove
+  setTimeout(function(){
+    ship.remove();
+  }, 3000);
 }
 
-
-function Traj4() {
+const Traj4 = async () =>{
   nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-  console.log(nb);
-  let target = document.querySelector('.target');
-  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  let ship = document.createElement('div');
+  ship.classList.add('target' + nb);
+  ship.id = "Traj4";
+  screen.appendChild(ship);
   if (nb == 3) {
-    gsap.to(".target", {rotate: "-30deg", duration: 0, ease: "none"})
+    gsap.to("#Traj4", {rotate: "-30deg", duration: 0, ease: "none"})
   } else {
-    gsap.to(".target", {rotate: "-300deg", duration: 0, ease: "none"})
+    gsap.to("#Traj4", {rotate: "-300deg", duration: 0, ease: "none"})
   }
-  gsap.fromTo(".target", {left: "-10%", top: "100%"}, {left: "100%", top: "0%", duration: 5, ease: "none"});
+  gsap.fromTo("#Traj4", {left: "-10%", top: "100%"}, {left: "100%", top: "0%", duration: 3, ease: "none"});
+  // remove
+  setTimeout(function(){
+    ship.remove();
+  }, 3000);
 }
 
-function Traj5() {
-  nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-  console.log(nb);
-  let target = document.querySelector('.target');
-  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
-  if (nb == 3) {
-    gsap.to(".target", {rotate: "30deg", duration: 0, ease: "none"})
+var Aim = 0;
+var currentEventListener = 'click'; // initial value
+
+async function AimOn() {
+  if (Aim == 0) {
+    Aim = 1;
+    currentEventListener = 'mouseover';
+    document.querySelector('.blank2>p').style.color = "red";
   } else {
-    gsap.to(".target", {rotate: "300deg", duration: 0, ease: "none"})
+    currentEventListener = 'click'; 
+    Aim = 0;
+    document.querySelector('.blank2>p').style.color = "rgb(70, 70, 70)";
   }
-  gsap.fromTo(".target", {left: "110%", top: "100%"}, {left: "-10%", top: "0%", duration: 5, ease: "none"});
 }
 
+async function laugth(){
+  for (let i = 0; i < 100 ; i++){
+    nb1 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+    nb2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+    if (nb1 == nb2) {
+      nb2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+    } else {
+      if (nb1 == 1) {
+        Traj1();
+      }
+      if (nb1 == 2) {
+        Traj2();
+      }
+      if (nb1 == 3) {
+        Traj3();
+      }
+      if (nb1 == 4) {
+        Traj4();
+      }
+      if (nb2 == 1) {
+        Traj1();
+      }
+      if (nb2 == 2) {
+        Traj2();
+      }
+      if (nb2 == 3) {
+        Traj3();
+      }
+      if (nb2 == 4) {
+        Traj4();
+      }
+      let ship1 = document.querySelector('#Traj' + nb1);
+      let ship2 = document.querySelector('#Traj' + nb2);
+      let ships = [ship1, ship2];
+
+      console.log(Aim);
+        ships.forEach(ship => {
+          ship.addEventListener(currentEventListener, function(){
+            takedown++;
+            let takedownText = document.querySelector('#takedown');
+            takedownText.innerHTML = takedown;  
+            let tire = document.createElement('div');
+            tire.classList.add('tire');
+            screen.appendChild(tire);
+            gsap.to(tire, {left: ship.offsetLeft, top: ship.offsetTop, duration: 0.1, ease: "none"});
+            setTimeout(function(){
+              tire.remove();
+            }, 200);
+            ship.style.backgroundImage = "url('img/explosion.png')";
+            setTimeout(function(){
+              ship.remove();
+            }, 400);
+          })
+        })
+      await sleep(3000)
+    }    
+  }
+}
+
+laugth();

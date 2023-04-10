@@ -318,39 +318,201 @@ h1 {
   width: 100vw;
   height: 100vh;
   background-color: rgb(107, 105, 107);
-  background-image: url(../img/space1.png);
+  /*background-image: url(../img/space1.png);*/
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 10% 70% 20%;
+  grid-template-areas: "blank1 blank2 blank3" "blank4 screen blank5" "blank6 blank7 blank8";
+
+}
+
+.blank1 {
+  grid-area: blank1;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
+}
+
+.blank2 {
+  grid-area: blank2;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: space-around;
   align-items: center;
   gap: 20px;
 }
 
-#screen {
-  border: 2px solid red;
-  width: 80%;
-  height: 70%;
+.blank2 p {
+  color: rgb(70, 70, 70);
+  font-size: 30px;
+  border: 2px solid rgb(39, 39, 39);
+  width: fit-content;
+  background-color: rgb(54, 65, 54);
+  padding: 3px;
 }
 
-/* #board {
+.blank3 {
+  grid-area: blank3;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
+}
+
+.blank4 {
+  grid-area: blank4;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
+}
+
+.blank5 {
+  grid-area: blank5;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
+}
+
+.blank6 {
+  grid-area: blank6;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
+}
+
+.blank7 {
+  grid-area: blank7;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
+}
+
+.blank8 {
+  grid-area: blank8;
+  z-index: 23;
+  background-color:rgb(107, 105, 107);
+}
+
+
+#screen {
+  grid-area: screen;
   z-index: 21;
+  border: 5px solid rgb(39, 39, 39);
+  background-image: url(../img/space1.png);
+}
+
+#glass {
   position: absolute;
+  z-index: 24;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 800px;
-  height: 300px;
-  background-color: rgb(160, 60, 160);
-  transform: rotateX(30deg);
-} */
+  width: 80%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
-.target {
+
+.target1 {
+  z-index: 22;
+  background-image: url(../img/xwing.png);
   background-size: cover;
   width: 100px;
   height: 100px;
   position : relative;
-  top: 0;
-  left: -10%;
   overflow: hidden;
 
+}
+
+.target2 {
+  z-index: 22;
+  background-image: url(../img/awing.png);
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  position : relative;
+  overflow: hidden;
+}
+
+.target3 {
+  z-index: 22;
+  background-image: url(../img/ETA.png);
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  position : relative;
+  overflow: hidden;
+}
+
+
+.tire {
+  background-color: brown;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+}
+
+#Aim {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+.the-button {
+  border-radius: 50%;
+  box-shadow: 0 0 .5em rgba(0,0,0,1), 
+    inset 0 .25em .3em rgba(255,255,255,.3), 
+    inset 0 -.25em .3em rgba(0,0,0,.5);
+  cursor: pointer;
+  font: inherit;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.the-button:before {
+  background: linear-gradient(to bottom,  
+    rgba(255,255,255,0.14) 0%, 
+    rgba(255,255,255,0) 50%, 
+    rgba(255,255,255,0) 100%);
+  border-radius: 50%;
+  content: " ";
+  height: 80%;
+  left: 10%;
+  position: absolute;
+  top: 10%;
+  width: 80%;
+}
+
+.the-button:active {
+  box-shadow: 0 0 .5em rgba(0,0,0,1), 
+    inset 0 .1em .3em rgba(0,0,0,.5), 
+    inset 0 -.1em .3em rgba(0,0,0,.5);
+}
+
+.the-button:active:before {
+  top: 11.5%;
+}
+
+.button-frame {
+  background: #cc0000;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 .25em rgba(0,0,0,.9), 
+    inset 0 .25em .125em rgba(255,255,255,.3), 
+    inset 0 -.25em .125em rgba(0,0,0,.3);
+  display: block;
+  height: 6.8em;
+  margin: -3.4em auto 0;
+  padding: .55em;
+  position: relative;
+  top: 50%;
+  width: 6.8em;
+  z-index: 20;
+}
+
+.plastic {
+  background: linear-gradient(to bottom,  #b01e1e 0%,#920f0f 100%);
 }
