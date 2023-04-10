@@ -4,9 +4,11 @@
     box-sizing: border-box;
 }
 body{
-    background-color: black;
+    background-image: url(../img/space2.png);
     height: 100vh;
     overflow: hidden;
+    background-size: cover;
+    
 }
 
 .mc75{
@@ -38,6 +40,43 @@ body{
 }   
 
 .destroyer > img {
+    width: 163px;
+    height: 121.5px;
+}
+
+
+
+.destroyer1{
+    position: absolute;
+    right: -200px;
+    top: -150px;
+    
+
+    width: 175px;
+    height: 150px;
+   
+    transform: rotateX(55deg) rotateZ(20deg) rotateY(-10deg);
+}   
+
+.destroyer1 > img {
+    width: 163px;
+    height: 121.5px;
+}
+
+
+.destroyer2{
+    position: absolute;
+    right: -200px;
+    top: -150px;
+    
+
+    width: 175px;
+    height: 150px;
+   
+    transform: rotateX(55deg) rotateZ(20deg) rotateY(-10deg);
+}   
+
+.destroyer2 > img {
     width: 163px;
     height: 121.5px;
 }
