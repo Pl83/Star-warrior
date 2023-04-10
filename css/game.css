@@ -216,7 +216,7 @@ h1 {
 }
 
 #menu img {
-  height: 400px;
+  height: 20vh;
   width: auto;
   border-radius: 20px;
 }
@@ -262,7 +262,7 @@ h1 {
   cursor: pointer;
 }
 
-#menu span {
+.spanstyle {
   color: aqua;
   background-color: aqua;
   padding: 8px 4px;
@@ -270,4 +270,38 @@ h1 {
   -webkit-box-shadow:0px 0px 55px 2px rgba(0, 247, 255, 0.8);
   -moz-box-shadow: 0px 0px 55px 2px rgba(0, 247, 255, 0.8);
   box-shadow: 0px 0px 55px 2px rgba(0, 247, 255, 0.8);
+}
+
+#param {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#laserrange {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#Status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  background-color: rgb(44, 44, 44);
+}
+
+#StatusShield {
+  display: flex;
+  flex-direction: row;
+}
+
+#StatusHp {
+  display: flex;
+  flex-direction: row;
 }

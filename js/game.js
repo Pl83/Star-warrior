@@ -4,11 +4,8 @@ var aircraft = {
   3: {shield: 2, hp: 3, path: '../img/ETA.png', name: 'ETA', id: 'ETA' , box: 'ETAbase'},
 }
 
-
-
 var MyShip = 0;
 var Fire = 100;
-
 
 let card = document.querySelectorAll('.descrip')
 card.forEach((card) => {
@@ -25,10 +22,7 @@ let nbl = document.querySelector('#nbl')
 nbl.addEventListener('change', () => {
   Fire = nbl.value
   textnbl.innerHTML = 'Nombre de Lasers :' + Fire
-})
-
-
-
+}) 
 
 //Controller 1 : Drag and drop
 
@@ -68,9 +62,8 @@ function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
-}
-  // active le drag and drop sur l'élément Xwing
-
+} 
+// active le drag and drop sur l'élément Xwing
 
 // Controller 2 : mouse
 // function cursorxwing() {
@@ -92,12 +85,13 @@ function dragElement(elmnt) {
 
 
 
-// laser beam
 
+// laser beam
 
 const sleep = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time))
 } 
+
 const ShootLaser = async () => {
   for (let i = 0; i < Fire; i++) {
     await sleep(100)
@@ -114,17 +108,17 @@ const ShootLaser = async () => {
   win.style.zIndex = "3";
   gsap.to("#win", {opacity: 1, duration: 1});
 }
-
-
 // hitbox with addeventlistener
 var hit = 0; // initialise le compteur de hit
 
- // console.log(ShildHp + Hp); // affiche le nombre de hp total
-
+// console.log(ShildHp + Hp); // affiche le nombre de hp total
 function detecterCollision() {
 
   var ShildHp = MyShip.shield; // definie les hp du shield
   var Hp = MyShip.hp; // definie les hp du Xwing
+
+  let StatusShield = document.querySelector('#StatusShield')
+  let StatusHp = document.querySelector('#StatusHp')
   
   const base = document.getElementById(MyShip.box);
   //console.log(base);
@@ -146,8 +140,13 @@ function detecterCollision() {
       console.log('Hit: ' + hit + 'Shield: ' + ShildHp );
       //console.log(hit);
       laser.remove(); // clean le laser a l'impact
+       // clean le shield a l'impact
+      if (StatusShield.lastChild != null) {
+        StatusShield.lastChild.remove();
+      } else if (StatusHp.lastChild != null) {
+        StatusHp.lastChild.remove();
+      }
       if (hit == ShildHp) {
-
         let base = document.querySelector('#' + MyShip.box);
         base.style.backgroundColor = "rgba(0, 0, 0, 0)";
       } else if (hit - ShildHp == Hp) {
@@ -156,11 +155,10 @@ function detecterCollision() {
         let endgame = document.querySelector('#endgame')
         endgame.style.zIndex = "4";
         gsap.to("#endgame", {opacity: 1, duration: 1});
-      }
+      } 
     }
   });
 }
-
 
 // animate background 
 function background() {
@@ -172,6 +170,38 @@ function background() {
   });
 }
 
+// music 
+var audio = new Audio('SoundEffect/SFM.mp3');
+let OnOff = document.querySelector('#music');
+    OnOff.addEventListener('click', function() {
+  if (OnOff.checked == true) {
+    console.log("on");
+    audio.play();
+  } else {
+    console.log("off");
+    audio.pause();
+  }
+});
+
+// status 
+function stat() {
+  let StatusShield = document.querySelector('#StatusShield');
+  let StatusHp = document.querySelector('#StatusHp');
+  nb1 = MyShip.hp;
+  nb2 = MyShip.shield;
+  console.log(nb1);
+  console.log(nb2);
+  for (let i = 0; i < nb1; i++) {
+    let Hp = document.createElement('span');
+    Hp.classList.add('spanstyle');
+    StatusHp.appendChild(Hp);
+  }
+  for (let i = 0; i < nb2; i++) {
+    let Shield = document.createElement('span');
+    Shield.classList.add('spanstyle');
+    StatusShield.appendChild(Shield);
+  }
+}
 
 // launch game
 function play(){
@@ -181,6 +211,7 @@ function play(){
     let MakeAppear = document.querySelector('#'+MyShip.id);
     MakeAppear.style.display = "block";
     document.getElementById("menu").style.display = "none";
+    stat();
     background();
     ShootLaser();
     setInterval(detecterCollision, 10);
@@ -188,8 +219,6 @@ function play(){
     alert("You must choose a ship before playing");
   }
 }
-
-
 
 // restart game
 function restart(){

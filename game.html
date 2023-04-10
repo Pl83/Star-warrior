@@ -16,25 +16,33 @@
       <div class="descrip" id="1">
         <h2>X-wing</h2>
         <img src="img/xwing.png" alt="">
-        <p>Shield : <span></span> <span></span> <span></span> <span></span></p>
-        <p>Hp : <span></span> <span></span> </p>
+        <p>Shield : <span class="spanstyle"></span> <span class="spanstyle"></span> <span class="spanstyle"></span> <span class="spanstyle"></span></p>
+        <p>Hp : <span class="spanstyle"></span> <span class="spanstyle"></span> </p>
       </div>
       <div class="descrip" id="2">
         <h2>A-wing</h2>
         <img src="img/awing.png" alt="">
-        <p>Shield : <span></span> <span></span></p>
-        <p>Hp : <span></span> <span></span></p>
+        <p>Shield : <span class="spanstyle"></span> <span class="spanstyle"></span></p>
+        <p>Hp : <span class="spanstyle"></span> <span class="spanstyle"></span></p>
       </div>
       <div class="descrip" id="3">
         <h2>ETA</h2>
         <img src="img/ETA.png" alt="">
-        <p>Shield : <span></span> <span></span></p>
-        <p>Hp : <span></span> <span></span> <span></span></p>
+        <p>Shield : <span class="spanstyle"></span> <span class="spanstyle"></span></p>
+        <p>Hp : <span class="spanstyle"></span> <span class="spanstyle"></span> <span class="spanstyle"></span></p>
       </div>
     </div>
-    <div id="MyShip"></div>
-    <label for="nbl" id="textnbl">Nombre de Lasers : 100</label>
-    <input type="range" id="nbl" name="nbl" min="2" max="300" step="1" value="100">
+    <div id="param">
+      <div id="MyShip"></div>
+      <div id="laserrange">
+        <label for="nbl" id="textnbl">Nombre de Lasers : 100</label>
+        <input type="range" id="nbl" name="nbl" min="2" max="300" step="1" value="100">
+      </div>
+      <div>
+        <label for="music" >Music </label>
+        <input type="checkbox" name="music" id="music" value="On">
+      </div>
+    </div>
     <button onclick="play()">Play</button>
   </div>
 
@@ -59,6 +67,17 @@
   <div id="bg"></div>
 
   <main>
+
+    <div id="Status">
+      <h2>Shield point</h2>
+      <div id="StatusShield">
+       
+      </div>
+      <h2>Hp point</h2>
+      <div id="StatusHp">
+        
+      </div>
+    </div>
 
     <h1 id="zap">You Win</h1>
 
