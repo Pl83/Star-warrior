@@ -98,8 +98,9 @@ const ShootLaser = async () => {
     let origine = document.querySelector('#origine')
     let laser = document.createElement('div')
     laser.classList.add('laser')
+    laser.id = 'laser' + i
     let area = Math.floor(Math.random() * (95 - 0 + 1)) + 0;
-    laser.style.top =  area - (i/1.2) + '%' ; // correctif car sinon les lasers sont de plus en plus bas jusqu'à disparaitre
+    laser.style.top =  area - (i/2) + '%' ; // correctif car sinon les lasers sont de plus en plus bas jusqu'à disparaitre
     origine.appendChild(laser)
     gsap.to(".laser", {right: "1000000%", duration: 30}) // faire bouger les laser
   }
@@ -108,6 +109,17 @@ const ShootLaser = async () => {
   win.style.zIndex = "3";
   gsap.to("#win", {opacity: 1, duration: 1});
 }
+
+const DeleteLaser = async () => {
+  await sleep(5000)
+  for (let i = 0; i < Fire; i++) {
+    await sleep(100)
+    let laser = document.querySelector('#laser' + i)
+    laser.remove()
+  }
+}
+
+
 // hitbox with addeventlistener
 var hit = 0; // initialise le compteur de hit
 
@@ -130,6 +142,7 @@ function detecterCollision() {
   lasers.forEach(laser => {
     // Récupérer les coordonnées de l'élément laser
     const rectLaser = laser.getBoundingClientRect();
+
     
     // Vérifier s'il y a une collision entre les deux éléments
     if (rectBase.left < rectLaser.right && rectBase.right > rectLaser.left &&
@@ -214,6 +227,7 @@ function play(){
     stat();
     background();
     ShootLaser();
+    DeleteLaser();
     setInterval(detecterCollision, 10);
   } else {
     alert("You must choose a ship before playing");
@@ -224,3 +238,91 @@ function play(){
 function restart(){
   location.reload();
 }
+
+
+/* script game numero 2 */
+
+// let screen = document.querySelector('#screen');
+
+// let target = document.createElement('div');
+// target.classList.add('target');
+// screen.appendChild(target);
+
+var ennemies = {
+  1 : {
+    type: 'img/xwing.png'
+  },
+  2 : {
+    type: 'img/awing.png'
+  },
+  3 : {
+    type: 'img/ETA.png'
+  }
+}
+
+function Traj1() {
+  nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+  console.log(nb);
+  let target = document.querySelector('.target');
+  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  if (nb == 3) {
+    gsap.to(".target", {rotate: "30deg", duration: 0, ease: "none"})
+  } else {
+    gsap.to(".target", {rotate: "120deg", duration: 0, ease: "none"})
+  }
+  gsap.fromTo(".target", {left: "-10%", top: "0%"}, {left: "100%", top: "100%", duration: 5, ease: "none"});
+}
+
+function Traj2() {
+  nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+  console.log(nb);
+  let target = document.querySelector('.target');
+  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  if (nb == 3) {
+    gsap.to(".target", {rotate: "-30deg", duration: 0, ease: "none"})
+  } else {
+    gsap.to(".target", {rotate: "-120deg", duration: 0, ease: "none"})
+  }
+  gsap.fromTo(".target", {left: "110%", top: "0%"}, {left: "-10%", top: "100%", duration: 5, ease: "none"});
+}
+
+function Traj3() {
+  nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+  console.log(nb);
+  let target = document.querySelector('.target');
+  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  if (nb == 3) {
+    gsap.to(".target", {rotate: "210deg", duration: 0, ease: "none"})
+  } else {
+    gsap.to(".target", {rotate: "300deg", duration: 0, ease: "none"})
+  }
+  gsap.fromTo(".target", {left: "110%", top: "100%"}, {left: "-10%", top: "0%", duration: 5, ease: "none"});
+}
+
+
+function Traj4() {
+  nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+  console.log(nb);
+  let target = document.querySelector('.target');
+  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  if (nb == 3) {
+    gsap.to(".target", {rotate: "-30deg", duration: 0, ease: "none"})
+  } else {
+    gsap.to(".target", {rotate: "-300deg", duration: 0, ease: "none"})
+  }
+  gsap.fromTo(".target", {left: "-10%", top: "100%"}, {left: "100%", top: "0%", duration: 5, ease: "none"});
+}
+
+function Traj5() {
+  nb = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+  console.log(nb);
+  let target = document.querySelector('.target');
+  target.style.backgroundImage = "url(" + ennemies[nb].type + ")";
+  if (nb == 3) {
+    gsap.to(".target", {rotate: "30deg", duration: 0, ease: "none"})
+  } else {
+    gsap.to(".target", {rotate: "300deg", duration: 0, ease: "none"})
+  }
+  gsap.fromTo(".target", {left: "110%", top: "100%"}, {left: "-10%", top: "0%", duration: 5, ease: "none"});
+}
+
