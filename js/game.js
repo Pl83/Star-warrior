@@ -356,7 +356,7 @@ async function AimOn() {
 }
 
 async function laugth(){
-  for (let i = 0; i < 100 ; i++){
+  for (let i = 0; i < 50000 ; i++){
     nb1 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     nb2 = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     if (nb1 == nb2) {
@@ -414,4 +414,16 @@ async function laugth(){
   }
 }
 
-laugth();
+
+function empire() {
+  let Faction = document.querySelector('#Faction');
+  Faction.style.display = "none";
+  laugth();
+}
+
+function rebel() {
+  let Faction = document.querySelector('#Faction');
+  Faction.style.display = "none";
+  let GameTwo = document.querySelector('#GameTwo');
+  GameTwo.style.display = "none";
+}
