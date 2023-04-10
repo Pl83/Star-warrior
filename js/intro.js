@@ -82,3 +82,13 @@ gsap.to(".force_field .sword", {
 
 });
 
+
+function music() {
+  let musicale = document.getElementById("musicale");
+  musicale.addEventListener("click", function () {
+  var audio = new Audio("SoundEffect/intro.mp3");
+  audio.play();
+  audio.volume = 0.1;
+  musicale.style.display = "none";
+  });
+}

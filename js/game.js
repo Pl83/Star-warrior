@@ -427,3 +427,7 @@ function rebel() {
   let GameTwo = document.querySelector('#GameTwo');
   GameTwo.style.display = "none";
 }
+
+function reload() {
+  window.location.href = "intro.html";
+}
