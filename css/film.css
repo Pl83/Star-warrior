@@ -80,3 +80,52 @@ body{
     width: 163px;
     height: 121.5px;
 }
+.xwing {
+    opacity: 0;
+    position: absolute;
+    bottom: 200px;
+    z-index: -1;
+    left: 150px;
+    rotate: 140deg;
+    transform: rotateY(75deg);
+}
+.xwing img {
+    width: 150px;
+    height: 75px;
+}
+.tie img{
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.t1{
+    position: absolute;
+    opacity: 0;
+    top: 75px;
+    right: 125px;
+    z-index: -1;
+}
+
+.t2{
+    position: absolute;
+    opacity: 0;
+    top: 150px;
+    right: 125px;
+    z-index: -1;
+}
+
+.t3{
+    position: absolute;
+    opacity: 0;
+    top: 150px;
+    right: 175px;
+    z-index: -1;
+}
+.t4{
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    top: 250px;
+    right: 100px;
+}
