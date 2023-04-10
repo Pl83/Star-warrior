@@ -61,3 +61,5 @@ gsap.to('.t1', {x : -225 , duration : 2 , delay : 19 })
 gsap.to('.t2', {x : -150 , duration : 2 , delay : 19})
 gsap.to('.t3', {x : -175 , duration : 2 , delay : 19})
 gsap.to('.t4', {x : -250 , duration : 2 , delay : 19})
+
+gsap.to(".button" , {opacity : 1 , duration: 1 , delay : 21})

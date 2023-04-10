@@ -105,7 +105,7 @@ p {
 	bottom: 0;
 	left: 50%;
 	margin-left: -10em;
-	z-index: 0;
+	z-index: 10;
 	transform: perspective(350px) rotateX(25deg);
 	transform-origin: 50% 100%;
 }
@@ -313,4 +313,27 @@ p {
 		 background: rgba(255, 100, 50, 0.8);
 		 box-shadow: 0 -5px 30px 5px rgba(255, 0, 50, 0.5);
 	}
+}
+
+
+.button{
+	opacity: 0;
+	position: absolute;
+	bottom: 250px;
+	left: 47%;
+	z-index: 10;
+	border: 1px solid #ddd;
+	border-radius: 15px;
+	padding : 10px;
+	
+}
+a {
+	text-decoration: none;
+	color: white;
+	font-size: 16px;
+}
+.button:hover{
+	background-color: #ddd;
+	transition: 1s;
+	
 }

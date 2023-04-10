@@ -17,11 +17,7 @@ function randomPosition() {
   return [randomX, randomY];
 }
 
-gsap.to
-
-
-
-
+gsap.to(".button" , {opacity : 1 , duration: 1 , delay : 33})
 
 gsap.to(
   "#content",
@@ -83,4 +79,6 @@ gsap.to(".force_field .sword", {
     sword.style.opacity = 1;
     console.log(sword.style.opacity);
   },
+
 });
+
