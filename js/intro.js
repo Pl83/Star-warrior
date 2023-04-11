@@ -71,7 +71,7 @@ gsap.to(".force_field .sword", {
   transform: "rotateX(360deg) rotateY(1080deg) rotateZ(2160deg)",
   duration: 5,
   opacity: 1,
-  delay: 9,
+  delay: 65,
   ease: Sine.linear,
   repeat: -1,
   onRepeat: () => {
